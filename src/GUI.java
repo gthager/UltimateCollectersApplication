@@ -16,7 +16,7 @@ public class GUI {
 		Object[] loginCreds = new Object[2];
 		JPanel inputPanel = new JPanel();
 		//Adds image to login page
-		ImageIcon loginImage = new ImageIcon("C:/Users/gthag/eclipse-workspace/Ultimate Collector's Application/src/images/UCALoginAccountImage.png");
+		ImageIcon loginImage = new ImageIcon("UCALoginAccountImage.png");
 		JLabel loginImageLabel = new JLabel(loginImage);
 
 		//creates text input prompts
