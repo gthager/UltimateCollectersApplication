@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class GUI {
-	public static Object[] LoginPage(JFrame window) {
+	public static Object[] LoginPage(JFrame window, Boolean error) {
 		//creates variables
 		Object[] loginCreds = new Object[2];
 		JPanel inputPanel = new JPanel();
@@ -22,6 +23,8 @@ public class GUI {
 		//creates text input prompts
 		JLabel UsernameInputPrompt = new JLabel("Username");
 		JLabel PasswordInputPrompt = new JLabel("Password");
+		JLabel ErrorPrompt = new JLabel("Invalid Email or Password");
+		ErrorPrompt.setForeground(Color.red);
 		//adds text input
 		JTextField UsernameInput = new JTextField(20);
 		JPasswordField PasswordInput = new JPasswordField(20);
@@ -29,6 +32,9 @@ public class GUI {
 		JButton LoginButton = new JButton("Login");
 		
 		//adds all of the components to the JFrame
+		if (error == true) {
+			inputPanel.add(ErrorPrompt);
+		}
 		inputPanel.add(loginImageLabel);
 		inputPanel.add(UsernameInputPrompt);
 		inputPanel.add(UsernameInput);
