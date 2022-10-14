@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,31 +24,40 @@ public class GUI {
 		JLabel loginImageLabel = new JLabel(loginImage);
 
 		//creates text input prompts
-		JLabel UsernameInputPrompt = new JLabel("Username");
-		JLabel PasswordInputPrompt = new JLabel("Password");
+		JLabel UsernameInputPrompt = new JLabel("Username:");
+		JLabel PasswordInputPrompt = new JLabel("Password:");
 		JLabel ErrorPrompt = new JLabel("Invalid Email or Password");
 		ErrorPrompt.setForeground(Color.red);
 		//adds text input
-		JTextField UsernameInput = new JTextField(20);
+		JTextField UsernameInput = new JTextField(20);	
+		UsernameInput.setBounds(10,10, 0, 0);
 		JPasswordField PasswordInput = new JPasswordField(20);
 		//creates a login button
 		JButton LoginButton = new JButton("Login");
 		
+		
 		//adds all of the components to the JFrame
+		inputPanel.add(loginImageLabel);
 		if (error == true) {
 			inputPanel.add(ErrorPrompt);
 		}
-		inputPanel.add(loginImageLabel);
 		inputPanel.add(UsernameInputPrompt);
 		inputPanel.add(UsernameInput);
 		inputPanel.add(PasswordInputPrompt);
 		inputPanel.add(PasswordInput);
 		inputPanel.add(LoginButton);
+		window.setLayout(new GridLayout(1,3));
+		//Empty JPanels to add spacing from the sides
+		JPanel empty = new JPanel();
+		JPanel alsoEmpty = new JPanel();
+		inputPanel.setLayout(new GridLayout(7,1,10,5));
+		window.add(empty);
 		window.add(inputPanel);
+		window.add(alsoEmpty);
 		
 		
 		//returns login credentials
-		window.pack();
+		window.setSize(1920,1080);
 		window.setVisible(true);
 		//waits for user input
 		while (true) {

@@ -4,6 +4,7 @@ public class main {
 
 	public static void main(String[] args) {
 		JFrame window = new JFrame("Ultimate Collector's Aplication");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Object[] loginCreds = new Object[2];
 		loginCreds = GUI.LoginPage(window, true);
 		//test that credentials were recieved
