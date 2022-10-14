@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,9 +28,11 @@ public class GUI {
 		ErrorPrompt.setForeground(Color.red);
 		//adds text input
 		JTextField UsernameInput = new JTextField(20);
+		UsernameInput.setBounds(10,10, 0, 0);
 		JPasswordField PasswordInput = new JPasswordField(20);
 		//creates a login button
 		JButton LoginButton = new JButton("Login");
+		
 		
 		//adds all of the components to the JFrame
 		if (error == true) {
@@ -41,11 +44,12 @@ public class GUI {
 		inputPanel.add(PasswordInputPrompt);
 		inputPanel.add(PasswordInput);
 		inputPanel.add(LoginButton);
+		inputPanel.setLayout(new GridLayout(7,1,0,10));
 		window.add(inputPanel);
 		
 		
 		//returns login credentials
-		window.pack();
+		window.setSize(1920,1080);
 		window.setVisible(true);
 		//waits for user input
 		while (true) {
