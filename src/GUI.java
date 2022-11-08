@@ -47,7 +47,7 @@ public class GUI {
 		inputPanel.add(PasswordInput);
 		inputPanel.add(LoginButton);
 		window.setLayout(new GridLayout(1,3));
-		//Empty JPanels to add spacing from the sides
+		//Working on the layout of the window/ input panel
 		JPanel empty = new JPanel();
 		JPanel alsoEmpty = new JPanel();
 		inputPanel.setLayout(new GridLayout(7,1,10,5));
