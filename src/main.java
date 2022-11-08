@@ -3,10 +3,8 @@
 public class main {
 
 	public static void main(String[] args) {
-		JFrame window = new JFrame("Ultimate Collector's Aplication");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        LoginWindow.main(args);
 		Object[] loginCreds = new Object[2];
-		loginCreds = GUI.LoginPage(window, true);
 		//test that credentials were recieved
 		System.out.println(loginCreds[0]);
 		char[] password = (char[]) loginCreds[1];
