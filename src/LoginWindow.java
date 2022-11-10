@@ -1,4 +1,8 @@
 
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -16,8 +20,8 @@ public class LoginWindow extends javax.swing.JFrame {
     /**
      * Creates new form LoginWindow
      */
-    public LoginWindow() {
-        initComponents();
+    public LoginWindow(mySQLAccess conn) {
+        initComponents(conn);
     }
 
     
@@ -28,8 +32,8 @@ public class LoginWindow extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents(mySQLAccess conn) {
+    	
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -58,10 +62,30 @@ public class LoginWindow extends javax.swing.JFrame {
         jLabel2.setText("Password:");
 
         jButton1.setText("Login");
+        //button action listener
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPressed(evt);
+                try {
+					jButtonPressed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
+
+			@SuppressWarnings("deprecation")
+			//button method
+			private void jButtonPressed(ActionEvent evt) throws SQLException {
+				//tests if the password is valid
+				boolean isValid = conn.testCredentials(jTextField1.getText(), jPasswordField1.getText());
+				System.out.println(isValid);
+				if (isValid == true) {
+					//switch to the main window of application
+				}
+				else {
+					//show error message
+				}
+			}
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UCALoginAccountImage.png"))); // NOI18N
@@ -110,15 +134,12 @@ public class LoginWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButtonPressed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_e
-        // Test login credentials
-    	
-    }//GEN-LAST:event_e
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(mySQLAccess conn) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -145,7 +166,7 @@ public class LoginWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginWindow().setVisible(true);
+                new LoginWindow(conn).setVisible(true);
             }
         });
     }
