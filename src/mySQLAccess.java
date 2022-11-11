@@ -11,13 +11,27 @@ public class mySQLAccess {
 	 private Statement statement = null;
 	 private PreparedStatement preparedStatement = null;
 	 private ResultSet resultSet = null;
+	 
+	 
 public void mySQLAccess() throws SQLException {
 	System.out.println("Connecting to database...");
 	connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=CST", "login", "HanSolo69");
 	System.out.println("Connection is valid: " + connect.isValid(2));
 }
+
+
 //credential testing method
 @SuppressWarnings("unlikely-arg-type")
+public void close() {
+	try {
+		connect.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+
 public boolean testCredentials(String user, String password) throws SQLException {
 	//try catch to avoid breaking my code
 	try {
