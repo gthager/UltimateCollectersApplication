@@ -27,6 +27,7 @@ public boolean testCredentials(String user, String password) throws SQLException
 		ResultSet result = stmt.executeQuery("call uca.hash('"+password+"', '"+user+"');");
 		//if the two hashs match that it returns true
 		result.next();
+		//System.out.println(result.getInt(1));
 		if (result.getInt(1) == 0) {
 			return true;
 		}
