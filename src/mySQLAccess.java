@@ -11,6 +11,7 @@ public class mySQLAccess {
 	 private Statement statement = null;
 	 private PreparedStatement preparedStatement = null;
 	 private ResultSet resultSet = null;
+	 private int user;
 	 
 	 
 public void mySQLAccess() throws SQLException {
@@ -53,5 +54,19 @@ public boolean testCredentials(String user, String password) throws SQLException
 		System.out.println("use uca; select 'Password' from logins where Username = '" + user + "'");
 		return false;
 	}
+}
+
+public String getUsername() throws SQLException {
+	Statement stmt = connect.createStatement();
+	ResultSet result = stmt.executeQuery("select Username from uca.logins where userID = "+ user);
+	result.next();
+	return result.getString(1);
+}
+
+public void setUser(String user) throws SQLException {
+	Statement stmt = connect.createStatement();
+	ResultSet result = stmt.executeQuery("select userID from uca.logins where Username = '" + user + "';");
+	result.next();
+	this.user = result.getInt(1);
 }
 }

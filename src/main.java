@@ -3,14 +3,13 @@
 import javax.swing.JFrame;
 
 public class main {
-
+	public static mySQLAccess conn = new mySQLAccess();
 	public static void main(String[] args) throws SQLException {
 		//connect to the database
-        MainWindow.main();
-        mySQLAccess dbConnection = new mySQLAccess();
-		dbConnection.mySQLAccess();
+		conn.mySQLAccess();
 		//allows the user to login from the login GUI
-        LoginWindow.main(dbConnection);
+        LoginWindow.main();
+       // Discover.main(args);
 		
 		
 	}
