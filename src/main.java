@@ -3,17 +3,13 @@
 import javax.swing.JFrame;
 
 public class main {
-
+	public static mySQLAccess conn = new mySQLAccess();
 	public static void main(String[] args) throws SQLException {
-		mySQLAccess dbConnection = new mySQLAccess();
-		dbConnection.mySQLAccess();
-        LoginWindow.main(dbConnection);
-
-		//test credentials
-		//boolean isValid = dbConnection.testCredentials("gthager", "Password");
-		//System.out.println(isValid);
-		
-		//open home screen
+		//connect to the database
+		conn.mySQLAccess();
+		//allows the user to login from the login GUI
+        LoginWindow.main();
+       // Discover.main(args);
 		
 		
 	}
