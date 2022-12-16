@@ -101,4 +101,26 @@ public void addToCollection(String set) throws SQLException {
 	stmt.close();
 	
 }
+
+public String[] getCollection() throws SQLException {
+	Statement stmt = connect.createStatement();
+	ResultSet result = stmt.executeQuery("select count(distinct(collection.set_num)) from uca.sets inner join uca.collection on collection.set_num = sets.set_num where collection.userID = "+user+";");
+	result.next();
+	String[] results = new String[result.getInt(1)];
+	result = stmt.executeQuery("select distinct(name) from uca.sets inner join uca.collection on collection.set_num = sets.set_num where collection.userID = "+user+";");
+	int index = 0;
+	while (result.next()) {
+		results[index] = result.getString(1);
+		index++;
+	}
+	result.close();
+	stmt.close();
+	return results;
+}
+
+public void removeFromCollection(String set) throws SQLException {
+	Statement stmt = connect.createStatement();
+	stmt.executeUpdate("delete from uca.collection where set_num = (select set_num from uca.sets where name = '" + set + "');");
+	stmt.close();
+}
 }
